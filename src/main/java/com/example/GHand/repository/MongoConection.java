@@ -6,6 +6,8 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Repository;
+
 
 public class MongoConection {
 
@@ -17,10 +19,10 @@ public class MongoConection {
         MongoCollection<Document> collectionUser = databaseGHand.getCollection("user");
 
 
-//        public User createUser(User user) {
-//            collectionUser.insertOne(new Document()
-//                    .append("name", user.getName())
-//                    .append("password", user.getPassword()));
-//            return user;
-//        }
+        public User createUser(User user) {
+            collectionUser.insertOne(new Document()
+                    .append("name", user.getName())
+                    .append("password", user.getPassword()));
+            return user;
+        }
 }

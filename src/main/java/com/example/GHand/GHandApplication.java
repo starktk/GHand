@@ -9,6 +9,7 @@ public class GHandApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(GHandApplication.class, args);
 
+
 	}
 
 }

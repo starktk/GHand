@@ -1,1 +1,7 @@
+server:
+  servlet:
+    context-path: /ghand
+  error:
+    include-message: always
+  port: 8081
 mongo-external-api: xxxxx
