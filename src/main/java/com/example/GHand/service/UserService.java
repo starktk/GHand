@@ -2,14 +2,13 @@ package com.example.GHand.service;
 
 import com.example.GHand.document.User;
 import com.example.GHand.repository.MongoConection;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 
-@Service
-@RequiredArgsConstructor
+
 public class UserService {
 
-    private MongoConection mongoConection;
+    private final MongoConection mongoConection;
 
     public UserService(MongoConection mongoConection) {
         this.mongoConection = mongoConection;
