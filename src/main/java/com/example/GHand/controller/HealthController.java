@@ -5,25 +5,15 @@ import com.example.GHand.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/teste")
+@RequestMapping("/Health")
 public class HealthController {
 
-    private final UserService userService;
-
-    public HealthController(UserService userService) {
-        this.userService = userService;
+    @GetMapping("/Conect")
+    public ResponseEntity<String> conectado() {
+        return ResponseEntity.ok("Up com sucesso");
     }
-
-    @PostMapping
-    public ResponseEntity<User> criarUsuario(@RequestBody User user) {
-        return new ResponseEntity<>(userService.criarUsuario(user), HttpStatus.CREATED);
-    }
-
 }
