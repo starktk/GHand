@@ -33,7 +33,6 @@ public class UserService {
     }
 
     public void deletarUsuario(UserDeleteDto userDeleteDto) {
-
         if(userDeleteDto.getName().isEmpty() && userDeleteDto.getPassword().isEmpty()) {
             throw new RuntimeException("Nome ou senha incorretos");
         }
