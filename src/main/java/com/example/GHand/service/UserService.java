@@ -7,7 +7,8 @@ import com.example.GHand.repository.MongoUserDB;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
-public class UserService {
+public class
+UserService {
 
     private ObjectMapper objectMapper;
     private final MongoUserDB mongoUserDB;
