@@ -1,11 +1,11 @@
-package com.example.GHand.document;
+package com.example.GHand.dto.user;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class User {
+public class UserDto {
 
     private String name;
     private String email;

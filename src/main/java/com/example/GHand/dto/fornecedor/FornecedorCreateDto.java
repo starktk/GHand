@@ -1,19 +1,17 @@
-package com.example.GHand.document;
+package com.example.GHand.dto.fornecedor;
 
+import com.example.GHand.document.Contato;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
-@Setter
 @Getter
-public class Fornecedor {
+@Setter
+public class FornecedorCreateDto {
 
     private String razaoSocial;
 
     private String cnpj;
 
     private Contato contato;
-
-    private List<Fornecedor> fornecedores;
 
 }

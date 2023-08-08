@@ -1,8 +1,7 @@
 package com.example.GHand.controller;
 
 import com.example.GHand.dto.user.UserCreateDto;
-import com.example.GHand.dto.user.UserDeleteDto;
-import com.example.GHand.dto.UserDto;
+import com.example.GHand.dto.user.UserDto;
 import com.example.GHand.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,8 +28,13 @@ public class UserController {
     }
 
     @DeleteMapping("/deleteUser")
-    public ResponseEntity deleteUser(@RequestBody UserDeleteDto userDeleteDto) {
-        userService.deletarUsuario(userDeleteDto);
+    public ResponseEntity deleteUser(@RequestBody UserDto userDto) {
+        userService.deletarUsuario(userDto);
         return ResponseEntity.ok().build();
+    }
+
+    @PutMapping
+    public ResponseEntity<UserDto> updatePassword(@RequestBody UserDto userDto) {
+        return new ResponseEntity<>(userService.alterarSenha(userDto), HttpStatus.ACCEPTED);
     }
 }

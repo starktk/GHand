@@ -1,12 +1,16 @@
-package com.example.GHand.document;
+package com.example.GHand.dto.fornecedor;
 
+
+import com.example.GHand.document.Contato;
+import com.example.GHand.document.Fornecedor;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
-@Setter
+
 @Getter
-public class Fornecedor {
+@Setter
+public class FornecedorDto {
 
     private String razaoSocial;
 
@@ -15,5 +19,4 @@ public class Fornecedor {
     private Contato contato;
 
     private List<Fornecedor> fornecedores;
-
 }

@@ -1,16 +1,16 @@
 package com.example.GHand.repository;
 
+import com.example.GHand.document.Usuario;
 import com.example.GHand.dto.user.UserCreateDto;
 import com.example.GHand.repository.mongobase.MongoConect;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mongodb.client.FindIterable;
-import org.apache.catalina.User;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
+import com.mongodb.client.result.UpdateResult;
 import org.bson.Document;
 
-public class
-
-
-MongoUserDB {
+public class MongoUserDB {
 
     private final MongoConect mongoConect;
 
@@ -20,23 +20,24 @@ MongoUserDB {
         this.mongoConect = mongoConect;
     }
 
-    public User createUser(UserCreateDto userCreateDto) {
+    public Usuario createUser(UserCreateDto userCreateDto) {
         mongoConect.pegarColection("user").insertOne(new Document()
                 .append("name", userCreateDto.getName())
                 .append("email", userCreateDto.getEmail())
                 .append("password", userCreateDto.getPassword()));
-        User user = objectMapper.convertValue(userCreateDto, User.class);
+        Usuario user = objectMapper.convertValue(userCreateDto, Usuario.class);
         return user;
     }
-    public User findUser(String name) {
+
+    public Usuario findUser(String name) {
         Document search = mongoConect.pegarDocumento();
         search.put("name", name);
         FindIterable<Document> user = mongoConect.pegarColection("user").find(search);
-        return objectMapper.convertValue(user, User.class);
+        return objectMapper.convertValue(user, Usuario.class);
     }
 
     public void deleteUser(String name, String password) {
-        User user = findUser(name);
+        Usuario user = findUser(name);
         if (!user.getPassword().equals(password)) {
             throw new RuntimeException("Senha incorreta");
         }
@@ -45,13 +46,28 @@ MongoUserDB {
         mongoConect.pegarColection("user").deleteOne(remove);
     }
 
-    public User updatePassword(String name,String password) {
-        User user = findUser(name);
-        if (!user.getPassword().equals(password)) {
+    public Usuario updatePassword(String name, String password) {
+        Usuario user = findUser(name);
+        if (user.getPassword().equals(password)) {
             throw new RuntimeException("Senha incorreta");
         }
-        Document updateDoc = mongoConect.pegarDocumento();
-        ;
-        FindIterable<Document>  user1 = mongoConect.pegarColection("user").updateOne(updateDoc.put("password", password));
+        UpdateResult userRetorno = mongoConect.pegarColection("user").updateOne(Filters.eq("password", user.getPassword())
+                , Updates.set("password", password));
+        return objectMapper.convertValue(userRetorno, Usuario.class);
     }
-}
+
+
+ //   public Usuario updateUser(String name, String email, String password) {
+ //       Usuario user = findUser(name);
+ //       if (user.getName().equals(name) && user.getEmail().equals(email) && user.getPassword().equals(password)) {
+ //           throw new RuntimeException("Usuario inexistente");
+        }
+        //      Document doc = mongoConect.pegarDocumento();
+        //      doc.append("name", name)
+        //              .append("email", email)
+        //                .append("password", password);
+        //       UpdateResult userRetorno = mongoConect.pegarColection("user")
+        //               .updateOne(Filters.eq("name", user.getName()), Updates.set("name", name));
+ //   }
+
+
