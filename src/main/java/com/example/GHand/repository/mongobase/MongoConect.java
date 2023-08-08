@@ -8,7 +8,7 @@ import org.bson.Document;
 import org.springframework.beans.factory.annotation.Value;
 
 @Getter
-public class MongoConect {
+public final class MongoConect {
 
     @Value("${mongo-external-api}")
     private String uri;

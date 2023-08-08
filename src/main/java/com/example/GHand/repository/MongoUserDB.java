@@ -1,13 +1,16 @@
 package com.example.GHand.repository;
 
-import com.example.GHand.document.User;
 import com.example.GHand.dto.user.UserCreateDto;
 import com.example.GHand.repository.mongobase.MongoConect;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mongodb.client.FindIterable;
+import org.apache.catalina.User;
 import org.bson.Document;
 
-public class MongoUserDB {
+public class
+
+
+MongoUserDB {
 
     private final MongoConect mongoConect;
 
@@ -40,5 +43,15 @@ public class MongoUserDB {
         Document remove = mongoConect.pegarDocumento();
         remove.get(user.getPassword());
         mongoConect.pegarColection("user").deleteOne(remove);
+    }
+
+    public User updatePassword(String name,String password) {
+        User user = findUser(name);
+        if (!user.getPassword().equals(password)) {
+            throw new RuntimeException("Senha incorreta");
+        }
+        Document updateDoc = mongoConect.pegarDocumento();
+        ;
+        FindIterable<Document>  user1 = mongoConect.pegarColection("user").updateOne(updateDoc.put("password", password));
     }
 }
