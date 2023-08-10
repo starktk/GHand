@@ -1,6 +1,6 @@
 server:
   servlet:
-    context-path: /ghand
+    context-path:
   error:
     include-message: always
   port: 8081

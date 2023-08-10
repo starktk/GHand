@@ -33,8 +33,13 @@ public class UserController {
         return ResponseEntity.ok().build();
     }
 
-    @PutMapping
+    @PutMapping("/alterPassword")
     public ResponseEntity<UserDto> updatePassword(@RequestBody UserDto userDto) {
         return new ResponseEntity<>(userService.alterarSenha(userDto), HttpStatus.ACCEPTED);
+    }
+
+    @PutMapping("/alterUser")
+    public ResponseEntity<UserDto> updateUser(@RequestBody UserDto userDto) {
+        return new ResponseEntity<>(userService.alterarUsuario(userDto), HttpStatus.ACCEPTED);
     }
 }

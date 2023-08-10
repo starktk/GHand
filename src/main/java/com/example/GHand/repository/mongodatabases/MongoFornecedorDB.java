@@ -1,7 +1,6 @@
-package com.example.GHand.repository;
+package com.example.GHand.repository.mongodatabases;
 
 import com.example.GHand.document.Fornecedor;
-import com.example.GHand.repository.mongobase.MongoConect;
 
 import java.util.List;
 

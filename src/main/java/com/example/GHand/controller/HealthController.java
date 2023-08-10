@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/Health")
 public class HealthController {
 
-    @GetMapping("/Conect")
+    @GetMapping
     public ResponseEntity<String> conectado() {
         return ResponseEntity.ok("Up com sucesso");
     }

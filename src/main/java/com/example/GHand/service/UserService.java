@@ -2,14 +2,15 @@ package com.example.GHand.service;
 
 import com.example.GHand.dto.user.UserCreateDto;
 import com.example.GHand.dto.user.UserDto;
-import com.example.GHand.repository.MongoUserDB;
+import com.example.GHand.repository.mongodatabases.MongoUserDB;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.stereotype.Service;
 
-
-public class
-UserService {
+@Service
+public class UserService {
 
     private ObjectMapper objectMapper;
+
     private final MongoUserDB mongoUserDB;
 
     public UserService(MongoUserDB mongoUserDB) {
@@ -45,6 +46,14 @@ UserService {
         }
 
         return objectMapper.convertValue(mongoUserDB.updatePassword(userDto.getName(), userDto.getPassword()), UserDto.class);
+    }
+
+    public UserDto alterarUsuario(UserDto userDto) {
+        if (userDto.getName().isEmpty() && userDto.getEmail().isEmpty()) {
+            throw new RuntimeException("Preencha os campos novamente");
+        }
+
+        return objectMapper.convertValue(mongoUserDB.updatePassword(userDto.getName(), userDto.getEmail()), UserDto.class);
     }
 }
 
