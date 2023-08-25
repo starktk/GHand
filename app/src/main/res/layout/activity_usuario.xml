@@ -8,7 +8,33 @@
         tools:context=".register.usuario.view.UsuarioActivity">
 
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ti_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="18dp"
+            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="40dp"
+                android:hint="abcd"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/black"
+                tools:layout_editor_absoluteX="38dp"
+                tools:layout_editor_absoluteY="20dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>
