@@ -47,7 +47,7 @@ class LoginRepository {
         }
     }
 
-    suspend fun findUser(username: String) {
+    suspend fun findUser(username: String): Boolean{
         return withContext(Dispatchers.IO) {
             try {
                 val response = client.getUser(username = username)

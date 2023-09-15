@@ -5,7 +5,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".login.view.LoginActivity">
+        tools:context=".usuarioRegister.view.UsuarioActivity">
 
 
 
@@ -19,8 +19,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/ti_cnpj"
-            app:layout_constraintVertical_chainStyle="packed">
+            app:layout_constraintBottom_toTopOf="@id/ti_email"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:ignore="NotSibling">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/nome"
                 android:layout_width="match_parent"
@@ -34,38 +35,13 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ti_cnpj"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="18dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ti_nome"
-            app:layout_constraintBottom_toTopOf="@id/ti_email"
-            app:layout_constraintVertical_chainStyle="packed">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/cnpj"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/cnpj"
-                android:textColor="@color/black"
-                android:textSize="20dp"
-                android:gravity="center"
-                android:layout_marginHorizontal="40dp"
-                />
-
-
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ti_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="18dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ti_cnpj"
+            app:layout_constraintTop_toBottomOf="@id/ti_nome"
             app:layout_constraintBottom_toTopOf="@id/ti_pwd"
             app:layout_constraintVertical_chainStyle="packed">
             <com.google.android.material.textfield.TextInputEditText
@@ -100,6 +76,28 @@
                 android:inputType="textPassword"/>
 
         </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/bt_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginBottom="20dp"
+            android:text="Registrar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/ti_pwd"
+            android:hint="@string/goLogin"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+
+            />
 
         <ProgressBar
             android:id="@+id/pb_loading"

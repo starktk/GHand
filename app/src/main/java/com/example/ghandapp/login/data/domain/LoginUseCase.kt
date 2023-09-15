@@ -14,7 +14,7 @@ class LoginUseCase {
         return repository.createUser(username, name, password)
     }
 
-    suspend fun findUser(username: String) {
-        return repository.findUser()
+    suspend fun findUser(username: String): Boolean {
+        return repository.findUser(username = username)
     }
 }

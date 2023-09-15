@@ -14,3 +14,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "GHandApp"
 include ':app'
+include ':core'
+include ':extencao'
+include ':extern'
